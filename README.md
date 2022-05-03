@@ -292,7 +292,7 @@ To deploy the application to the AKS cluster created earlier you can do the foll
    kubectl get pods -w
    ```
 
-   You can verify the scale controller by spamming the `/api/text` route and see that `lorem-text-functions-` pod will scale upp depending on the queue depth of the queue created earlier.
+   You can verify the scale controller by spamming the `/api/text` route and see that `lorem-text-functions-` pod will scale up depending on the queue depth of the queue created earlier.
 
    > The `lorem-text-functions-http` will not scale as this is only the http endpoint (Generate Text) function that will deliver messages to the queue.
 
