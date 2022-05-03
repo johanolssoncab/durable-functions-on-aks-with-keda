@@ -221,7 +221,7 @@ To create the docker image and manifest you have two options.
 
 8. Generate the manifest `.yaml`
 
-   Use powershell to navigate to the root directory where of the Azure function project the [`Azure function project`](src/LoremText/) is located.
+   Use powershell to navigate to the root directory where the [`Azure function project`](src/LoremText/) is located.
 
    ```powershell
    func kubernetes deploy --name lorem-text-functions --image-name "$imageName" --min-replicas 1 --dry-run > "./manifests/lorem-text-function-deploy.yaml"
