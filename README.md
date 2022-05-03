@@ -149,19 +149,28 @@ To setup this infrastructure you have two options:
    kubectl config use-context $aksName
    ```
 
-9. Replace `UseDevelopmentStorage=true` in the `local.settings.json`
-
-   Get the storage account connection string by running:
+9. Install KEDA
 
    ```powershell
-   $storageAccountKey = $(az storage account keys list --resource-group $resourceGroupName --account-name $storageAccountName --query "[0].value") -replace '"', ''
+   #setting kubectl to use the newly created context
+   kubectl config use-context $aksName
 
-   $storageAccountConnectionString = "DefaultEndpointsProtocol=https;AccountName=$storageAccountName;AccountKey=$storageAccountKey;EndpointSuffix=core.windows.net"
-
-   Write-Output $storageAccountConnectionString
+   func kubernetes install --namespace keda
    ```
 
-   Take the output and replace the `UseDevelopmentStorage=true` text in the `local.settings.json` file.
+10. Replace `UseDevelopmentStorage=true` in the `local.settings.json`
+
+    Get the storage account connection string by running:
+
+    ```powershell
+    $storageAccountKey = $(az storage account keys list --resource-group $resourceGroupName --account-name $storageAccountName --query "[0].value") -replace '"', ''
+
+    $storageAccountConnectionString = "DefaultEndpointsProtocol=https;AccountName=$storageAccountName;AccountKey=$storageAccountKey;EndpointSuffix=core.windows.net"
+
+    Write-Output $storageAccountConnectionString
+    ```
+
+    Take the output and replace the `UseDevelopmentStorage=true` text in the `local.settings.json` file.
 
 ## Create image and manifest
 
